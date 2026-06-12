@@ -9,7 +9,7 @@ Minimal API desenvolvida com Node.js, Fastify e TypeScript para retornar a lista
 - **TypeScript**
 - **Swagger & Swagger UI** (Documentação interativa da API)
 - **ESLint** (Padronização e qualidade de código)
-- **Vitest** (Framework de testes unitários de alta velocidade)
+- **Jest** (Framework de testes unitários de alta velocidade)
 - **@fastify/cors** (Configuração de CORS)
 - **@fastify/helmet** (Segurança de cabeçalhos HTTP)
 - **Docker & Docker Compose** (Containerização com multi-stage build)
@@ -30,12 +30,13 @@ A API expõe os seus recursos com o prefixo `/api/v1`.
 - `GET /api/v1/drivers` : Retorna a lista de pilotos projetados para 2026.
 - `GET /api/v1/drivers/:name` : Pesquisa um piloto específico pelo nome.
 - `GET /api/v1/teams` : Retorna a lista de construtores/equipas para 2026.
+- `GET /api/v1/teams/:name` : Pesquisa uma equipe específica pelo nome.
 - `GET /docs` : Interface interativa do Swagger para exploração e testes dos endpoints.
 
 ## 🛡️ Segurança, Qualidade e Testes
 
 - **Documentação viva:** Swagger UI integrado para validação visual rápida dos contratos da API.
-- **Testes Unitários:** Validação isolada dos Casos de Uso com Vitest, garantindo o funcionamento das regras de negócio.
+- **Testes Unitários:** Validação isolada dos Casos de Uso com Jest, garantindo o funcionamento das regras de negócio.
 - **Análise Estática:** Uso do ESLint para garantir a conformidade com as diretrizes de _Clean Code_.
 - **Helmet:** Proteção contra vulnerabilidades comuns da web através do gerenciamento de cabeçalhos HTTP.
 - **CORS:** Configuração estrita para prevenir acessos não autorizados de origens cruzadas.
@@ -50,4 +51,5 @@ Você pode rodar este projeto utilizando o Node.js diretamente ou via Docker.
 1. Clone este repositório:
    ```bash
    git clone [https://github.com/SEU-USUARIO/f1-minimal-api.git](https://github.com/SEU-USUARIO/f1-minimal-api.git)
+   ``
    ```

@@ -25,6 +25,37 @@ export async function f1Routes(fastify: FastifyInstance) {
     F1Controller.getTeams,
   );
 
+  fastify.get<{ Params: { name: string } }>(
+    "/teams/:name",
+    {
+      schema: {
+        description: "Pesquisa uma equipe pelo nome para a temporada de 2026",
+        tags: ["Equipas"],
+        params: {
+          type: "object",
+          properties: {
+            name: { type: "string" },
+          },
+        },
+        response: {
+          200: {
+            type: "object",
+            properties: {
+              data: { type: "string" },
+            },
+          },
+          404: {
+            type: "object",
+            properties: {
+              message: { type: "string" },
+            },
+          },
+        },
+      },
+    },
+    F1Controller.getTeamByName,
+  );
+
   fastify.get(
     "/drivers",
     {

@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, jest } from "@jest/globals";
 import { F1Controller } from "../src/presentation/controllers/f1.controller";
 import { FastifyRequest, FastifyReply } from "fastify";
 import { GetDriversUseCase } from "../src/application/use-cases/get-drivers.usecase";
+import { GetTeamsUseCase } from "../src/application/use-cases/get-teams.usecase";
 
 describe("F1Controller", () => {
   let mockRequest: Partial<FastifyRequest>;
@@ -25,6 +26,35 @@ describe("F1Controller", () => {
     expect(mockReply.send).toHaveBeenCalledWith(
       expect.objectContaining({ data: expect.any(Array) }),
     );
+  });
+
+  it("should return status 200 when searching for an existing team", async () => {
+    const teams = new GetTeamsUseCase().execute();
+    const validName = teams[0];
+    mockRequest.params = { name: validName };
+
+    await F1Controller.getTeamByName(
+      mockRequest as FastifyRequest<{ Params: { name: string } }>,
+      mockReply as FastifyReply,
+    );
+
+    expect(mockReply.status).toHaveBeenCalledWith(200);
+    expect(mockReply.send).toHaveBeenCalledWith({ data: validName });
+  });
+
+  it("should return status 404 and error message for non-existent team", async () => {
+    const name = "Equipe Fantasma";
+    mockRequest.params = { name };
+
+    await F1Controller.getTeamByName(
+      mockRequest as FastifyRequest<{ Params: { name: string } }>,
+      mockReply as FastifyReply,
+    );
+
+    expect(mockReply.status).toHaveBeenCalledWith(404);
+    expect(mockReply.send).toHaveBeenCalledWith({
+      message: `A equipe '${name}' não faz parte da F1 2026`,
+    });
   });
 
   it("should return drivers with status 200", async () => {
