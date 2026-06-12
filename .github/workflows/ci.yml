@@ -30,5 +30,8 @@ jobs:
       - name: Run Lint (Verificação de código)
         run: npm run lint
 
+      - name: Run Unit Tests (Testes unitários)
+        run: npm run test
+
       - name: Build the project
         run: npm run build
