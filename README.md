@@ -1,6 +1,6 @@
 # 🏁 F1 Minimal API - Temporada 2026
 
-Minimal API desenvolvida com Node.js, Fastify e TypeScript para retornar a lista projetada de pilotos e equipes da Fórmula 1 para o ano de 2026. O projeto foi construído focando em alta performance e manutenibilidade através da **Clean Architecture** e integridade de código com **ESLint**.
+Minimal API desenvolvida com Node.js, Fastify e TypeScript para retornar a lista projetada de pilotos e equipes da Fórmula 1 para o ano de 2026. O projeto foi construído focando em alta performance e manutenibilidade através da **Clean Architecture**, integridade com **ESLint** e validação contínua por **Testes Unitários**.
 
 ## 🚀 Tecnologias
 
@@ -8,6 +8,7 @@ Minimal API desenvolvida com Node.js, Fastify e TypeScript para retornar a lista
 - **Fastify** (Framework web de alta performance)
 - **TypeScript**
 - **ESLint** (Padronização e qualidade de código)
+- **jest** (Framework de testes unitários de alta velocidade)
 - **@fastify/cors** (Configuração de CORS)
 - **@fastify/helmet** (Segurança de cabeçalhos HTTP)
 - **Docker & Docker Compose** (Containerização com multi-stage build)
@@ -28,16 +29,17 @@ A API expõe seus recursos com o prefixo `/api/v1`.
 - `GET /api/v1/drivers` : Retorna a lista de pilotos projetados para 2026.
 - `GET /api/v1/teams` : Retorna a lista de construtores/equipes para 2026.
 
-## 🛡️ Segurança e Qualidade de Código
+## 🛡️ Segurança, Qualidade e Testes
 
+- **Testes Unitários:** Validação isolada dos Casos de Uso com Jest, garantindo o funcionamento das regras de negócio.
 - **Análise Estática:** Uso do ESLint para garantir a conformidade com as diretrizes de _Clean Code_.
 - **Helmet:** Proteção contra vulnerabilidades comuns da web através do gerenciamento de cabeçalhos HTTP.
 - **CORS:** Configuração estrita para prevenir acessos não autorizados de origens cruzadas.
-- **Pipeline de CI/CD:** Integração contínua via GitHub Actions que valida o Lint e o Build a cada commit/pull request.
+- **Pipeline de CI/CD:** Integração contínua via GitHub Actions que valida o Lint, executa a suíte de testes e valida o Build a cada commit/pull request.
 
 ## 🛠️ Como executar localmente
 
-Você pode rodar este projeto de duas formas: utilizando o Node.js diretamente ou via Docker.
+Você pode rodar este projeto utilizando o Node.js diretamente ou via Docker.
 
 ### Opção 1: Usando Node.js (Ambiente de Desenvolvimento)
 
