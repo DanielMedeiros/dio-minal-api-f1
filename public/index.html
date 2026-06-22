@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏁 F1 2026 - Minimal Dashboard</title>
+    <!-- Google Fonts for Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="glowing-effect"></div>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="logo-area">
+                <span class="f1-badge">F1 2026</span>
+                <h1>Minimal Dashboard</h1>
+            </div>
+            <p class="subtitle">Consulte pilotos e construtores oficiais projetados para a temporada de Fórmula 1 de 2026</p>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Search & Actions Grid -->
+            <div class="controls-grid">
+                
+                <!-- Equipes Section -->
+                <section class="card controls-card" id="teams-card">
+                    <div class="card-header">
+                        <div class="header-icon icon-team">🛡️</div>
+                        <h2>Equipes & Construtores</h2>
+                    </div>
+                    <p class="card-description">Busque por equipes específicas ou visualize a listagem completa do grid 2026.</p>
+                    
+                    <form class="search-form" id="search-team-form">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="team-search-input" 
+                                placeholder="Ex: Ferrari, McLaren, Red Bull..." 
+                                required
+                                aria-label="Pesquisar Equipe"
+                            >
+                            <button type="submit" class="btn btn-primary" id="btn-search-team">
+                                <span class="btn-text">Buscar</span>
+                                <span class="btn-icon">🔍</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <button class="btn btn-secondary btn-full" id="btn-list-teams">
+                        <span class="btn-text">Listar todas as equipes</span>
+                        <span class="btn-icon">📋</span>
+                    </button>
+                </section>
+
+                <!-- Pilotos Section -->
+                <section class="card controls-card" id="drivers-card">
+                    <div class="card-header">
+                        <div class="header-icon icon-driver">🏎️</div>
+                        <h2>Pilotos da Grade</h2>
+                    </div>
+                    <p class="card-description">Pesquise pilotos da temporada de 2026 ou liste todos os competidores confirmados.</p>
+                    
+                    <form class="search-form" id="search-driver-form">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="driver-search-input" 
+                                placeholder="Ex: Hamilton, Verstappen, Leclerc..." 
+                                required
+                                aria-label="Pesquisar Piloto"
+                            >
+                            <button type="submit" class="btn btn-primary" id="btn-search-driver">
+                                <span class="btn-text">Buscar</span>
+                                <span class="btn-icon">🔍</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <button class="btn btn-secondary btn-full" id="btn-list-drivers">
+                        <span class="btn-text">Listar todos os pilotos</span>
+                        <span class="btn-icon">📋</span>
+                    </button>
+                </section>
+                
+            </div>
+
+            <!-- Results Output Section -->
+            <section class="results-section">
+                <div class="results-header">
+                    <h3 id="results-title">Aguardando interação...</h3>
+                    <span class="results-count" id="results-count" style="display: none;">0 itens</span>
+                </div>
+
+                <!-- Loader Indicator -->
+                <div class="loader-container" id="loader" style="display: none;">
+                    <div class="loader-spinner"></div>
+                    <p>Consultando dados da pista...</p>
+                </div>
+
+                <!-- Results Grid Container -->
+                <div class="results-grid" id="results-container">
+                    <div class="empty-state">
+                        <div class="empty-icon">🏁</div>
+                        <p>Escolha uma opção de busca ou listagem acima para começar a explorar o grid.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>F1 Minimal API Dashboard &copy; 2026. Powered by Fastify.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

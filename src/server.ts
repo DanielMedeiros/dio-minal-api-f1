@@ -1,7 +1,9 @@
 import "dotenv/config";
+import path from "path";
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import helmet from "@fastify/helmet";
+import fastifyStatic from "@fastify/static";
 import swagger from "@fastify/swagger";
 import swaggerUi from "@fastify/swagger-ui";
 import { f1Routes } from "./presentation/routes/f1.routes";
@@ -13,11 +15,26 @@ app.addHook("onClose", async (_instance) => {
 });
 
 async function bootstrap() {
-  await app.register(helmet);
+  await app.register(helmet, {
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", "data:", "https:*"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      },
+    },
+  });
 
   await app.register(cors, {
     origin: "*",
     methods: ["GET"],
+  });
+
+  await app.register(fastifyStatic, {
+    root: path.join(__dirname, "../public"),
+    prefix: "/",
   });
 
   await app.register(swagger, {

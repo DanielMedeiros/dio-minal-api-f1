@@ -1,0 +1,521 @@
+/* CSS Design System - F1 Minimal Dashboard */
+
+:root {
+    --bg-main: #06070a;
+    --bg-card: #0f1118;
+    --bg-card-hover: #161924;
+    --primary: #ff1801; /* F1 Speed Red */
+    --primary-glow: rgba(255, 24, 1, 0.4);
+    --secondary: #1f2230;
+    --secondary-hover: #2d3145;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --border-color: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(255, 24, 1, 0.2);
+    --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* Team Brand Colors */
+    --color-ferrari: #e80020;
+    --color-mercedes: #00a19c;
+    --color-redbull: #0600ef;
+    --color-mclaren: #ff8000;
+    --color-aston: #00594f;
+    --color-alpine: #0090ff;
+    --color-williams: #00a0de;
+    --color-rb: #6600cc;
+    --color-sauber: #52e252;
+    --color-haas: #b6babd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Cosmic & Track Background Effects */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 24, 1, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0, 161, 156, 0.02) 0%, transparent 40%);
+}
+
+.glowing-effect {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 24, 1, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    top: -200px;
+    right: -200px;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(80px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+.app-header {
+    margin-bottom: 3rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+    position: relative;
+}
+
+.app-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.f1-badge {
+    background-color: var(--primary);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.app-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 60%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Main Layout Grid */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .controls-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Premium Card Components */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.controls-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 24, 1, 0.03);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.header-icon {
+    font-size: 1.5rem;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+
+.card-header h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.card-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+/* Search Forms & Inputs */
+.search-form {
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(255, 24, 1, 0.15);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons */
+.btn {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 24, 1, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #ff3c28;
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 24, 1, 0.35);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.btn-secondary:active {
+    transform: scale(0.98);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Results Section styling */
+.results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 250px;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 3px solid var(--primary);
+    padding-left: 0.75rem;
+}
+
+.results-header h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.results-count {
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    color: var(--text-secondary);
+}
+
+/* Results Grid & Empty State */
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px dashed var(--border-color);
+    border-radius: 16px;
+    color: var(--text-secondary);
+}
+
+.empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Error States */
+.error-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: rgba(255, 24, 1, 0.02);
+    border: 1px solid rgba(255, 24, 1, 0.15);
+    border-radius: 16px;
+    color: #ff5252;
+}
+
+.error-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.error-state h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.error-state p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Dynamic Cards (Loaded dynamically via JS) */
+.result-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.result-card:hover {
+    background-color: var(--bg-card-hover);
+    transform: translateX(4px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--border-color);
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.card-meta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.03);
+    width: fit-content;
+}
+
+/* Dynamic Brand Border Classes for JS injection */
+.result-card.team-ferrari { border-left: 4px solid var(--color-ferrari); }
+.result-card.team-ferrari .card-avatar { border-color: var(--color-ferrari); color: var(--color-ferrari); }
+.result-card.team-mercedes { border-left: 4px solid var(--color-mercedes); }
+.result-card.team-mercedes .card-avatar { border-color: var(--color-mercedes); color: var(--color-mercedes); }
+.result-card.team-redbull { border-left: 4px solid var(--color-redbull); }
+.result-card.team-redbull .card-avatar { border-color: var(--color-redbull); color: var(--color-redbull); }
+.result-card.team-mclaren { border-left: 4px solid var(--color-mclaren); }
+.result-card.team-mclaren .card-avatar { border-color: var(--color-mclaren); color: var(--color-mclaren); }
+.result-card.team-aston { border-left: 4px solid var(--color-aston); }
+.result-card.team-aston .card-avatar { border-color: var(--color-aston); color: var(--color-aston); }
+.result-card.team-alpine { border-left: 4px solid var(--color-alpine); }
+.result-card.team-alpine .card-avatar { border-color: var(--color-alpine); color: var(--color-alpine); }
+.result-card.team-williams { border-left: 4px solid var(--color-williams); }
+.result-card.team-williams .card-avatar { border-color: var(--color-williams); color: var(--color-williams); }
+.result-card.team-rb { border-left: 4px solid var(--color-rb); }
+.result-card.team-rb .card-avatar { border-color: var(--color-rb); color: var(--color-rb); }
+.result-card.team-sauber { border-left: 4px solid var(--color-sauber); }
+.result-card.team-sauber .card-avatar { border-color: var(--color-sauber); color: var(--color-sauber); }
+.result-card.team-haas { border-left: 4px solid var(--color-haas); }
+.result-card.team-haas .card-avatar { border-color: var(--color-haas); color: var(--color-haas); }
+
+/* Loader CSS */
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem 0;
+    grid-column: 1 / -1;
+}
+
+.loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 24, 1, 0.1);
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Footer */
+.app-footer {
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
+/* Animations */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

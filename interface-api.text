@@ -1,0 +1,65 @@
+# Criar Front-End Premium para a F1 Minimal API
+
+Este plano descreve a criação de um front-end moderno, responsivo e esteticamente premium para interagir com a API de Fórmula 1 existente. O front-end será desenvolvido utilizando HTML5, CSS3 vanila customizado, e JavaScript vanila, sendo servido diretamente pela API Fastify para facilitar a execução local.
+
+## User Review Required
+
+> [!IMPORTANT]
+> Para servir o front-end na mesma porta que a API (ex: `http://localhost:3333/`), instalaremos o pacote `@fastify/static` no backend. A página também poderá ser aberta localmente via arquivo caso desejado (devido às configurações de CORS `*` já existentes).
+
+## Proposed Changes
+
+---
+
+### Dependências & Configuração do Servidor
+
+#### [MODIFY] [package.json](file:///e:/Dio/Node%20FastFy%20Api%20F1/dio-minal-api-f1/package.json)
+- Adicionar `@fastify/static` como dependência para servir arquivos estáticos.
+
+#### [MODIFY] [server.ts](file:///e:/Dio/Node%20FastFy%20Api%20F1/dio-minal-api-f1/src/server.ts)
+- Registrar o plugin `@fastify/static` apontando para a pasta `public`.
+- Configurar a rota principal `/` para servir o `index.html`.
+
+---
+
+### Interface do Usuário (Front-end)
+
+#### [NEW] [index.html](file:///e:/Dio/Node%20FastFy%20Api%20F1/dio-minal-api-f1/public/index.html)
+- Estrutura HTML5 semântica com contêineres para buscas, botões de ação e exibição de resultados.
+- Importação da fonte "Outfit" do Google Fonts para tipografia moderna de corrida.
+- Componentes:
+  - Header estilizado com tema de F1.
+  - Seção de Controles/Filtros com inputs e botões de busca para Pilotos e Equipes.
+  - Botões dedicados para "Listar todos os pilotos" e "Listar todas as equipes".
+  - Grid de resultados responsivo com animações suaves de entrada.
+  - Rodapé com créditos.
+
+#### [NEW] [style.css](file:///e:/Dio/Node%20FastFy%20Api%20F1/dio-minal-api-f1/public/style.css)
+- Design System completo com variáveis CSS (cores HSL, sombras, transições).
+- Tema escuro premium ("High-Octane Dark Mode") com fundos em degradê, bordas iluminadas e texturas modernas.
+- Cores de equipe personalizadas (Ferrari Red, McLaren Orange, Mercedes Teal, Red Bull Blue, Aston Martin Green, Sauber Lime Green, Williams Light Blue, Haas Grey/Red, RB Purple, Alpine Blue/Pink).
+- Micro-animações em botões, campos de entrada de busca e cards.
+- Layouts flexbox/grid responsivos que se adaptam a celulares, tablets e desktops.
+
+#### [NEW] [app.js](file:///e:/Dio/Node%20FastFy%20Api%20F1/dio-minal-api-f1/public/app.js)
+- Lógica JS limpa e otimizada para realizar requisições à API.
+- Detecção automática de origem (se está rodando no Fastify ou via arquivo local).
+- Manipulação dinâmica do DOM para renderizar cartões personalizados de pilotos e equipes com suas respectivas cores de equipe.
+- Tratamento amigável de erros (por exemplo, "Piloto não encontrado" com mensagens customizadas).
+- Efeito de carregamento (skeletons ou spinners) e feedback interativo.
+
+## Verification Plan
+
+### Automated Tests
+- Executar os testes atuais da API com `npm run test` para garantir que nada foi quebrado.
+- Executar o linter `npm run lint` para garantir a conformidade do código.
+
+### Manual Verification
+1. Instalar as novas dependências.
+2. Iniciar o servidor com `npm run dev`.
+3. Acessar `http://localhost:3333/` no navegador.
+4. Testar as buscas de pilotos (ex: "Lewis Hamilton", "Charles Leclerc", ou um nome inexistente).
+5. Testar as buscas de equipes (ex: "McLaren", "Scuderia Ferrari", ou uma equipe inexistente).
+6. Clicar no botão "Listar todos os pilotos" e verificar o grid de pilotos.
+7. Clicar no botão "Listar todas as equipes" e verificar o grid de equipes.
+8. Validar a responsividade em diferentes tamanhos de tela.
