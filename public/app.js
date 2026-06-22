@@ -28,30 +28,34 @@ document.addEventListener("DOMContentLoaded", () => {
     // Helper: Map entity names to CSS branding classes
     const getTeamClassByEntityName = (name) => {
         const lower = name.toLowerCase();
-        if (lower.includes("ferrari") || lower.includes("leclerc") || lower.includes("hamilton")) return "team-ferrari";
-        if (lower.includes("mercedes") || lower.includes("russell")) return "team-mercedes";
-        if (lower.includes("red bull") || lower.includes("redbull") || lower.includes("verstappen")) return "team-redbull";
+        if (lower.includes("ferrari") || lower.includes("hamilton") || lower.includes("leclerc")) return "team-ferrari";
+        if (lower.includes("mercedes") || lower.includes("russell") || lower.includes("antonelli")) return "team-mercedes";
+        if (lower.includes("red bull") || lower.includes("redbull") || lower.includes("verstappen") || lower.includes("hadjar")) return "team-redbull";
         if (lower.includes("mclaren") || lower.includes("norris") || lower.includes("piastri")) return "team-mclaren";
-        if (lower.includes("aston martin") || lower.includes("alonso")) return "team-aston";
-        if (lower.includes("alpine")) return "team-alpine";
-        if (lower.includes("williams") || lower.includes("albon")) return "team-williams";
-        if (lower.includes("visa cash") || lower.includes("rb") || lower.includes("tsunoda")) return "team-rb";
-        if (lower.includes("sauber") || lower.includes("hülkenberg") || lower.includes("hulkenberg")) return "team-sauber";
-        if (lower.includes("haas")) return "team-haas";
+        if (lower.includes("aston martin") || lower.includes("alonso") || lower.includes("stroll")) return "team-aston";
+        if (lower.includes("alpine") || lower.includes("gasly") || lower.includes("colapinto")) return "team-alpine";
+        if (lower.includes("williams") || lower.includes("albon") || lower.includes("sainz")) return "team-williams";
+        if (lower.includes("racing bulls") || lower.includes("lawson") || lower.includes("lindblad")) return "team-rb";
+        if (lower.includes("audi") || lower.includes("hülkenberg") || lower.includes("hulkenberg") || lower.includes("bortoleto")) return "team-audi";
+        if (lower.includes("haas") || lower.includes("ocon") || lower.includes("bearman")) return "team-haas";
+        if (lower.includes("cadillac") || lower.includes("p\u00e9rez") || lower.includes("perez") || lower.includes("bottas")) return "team-cadillac";
         return "";
     };
 
     // Helper: Map driver names to their 2026 teams
     const getDriverTeamName = (driverName) => {
         const lower = driverName.toLowerCase();
-        if (lower.includes("hamilton") || lower.includes("leclerc")) return "Scuderia Ferrari";
-        if (lower.includes("russell")) return "Mercedes-AMG Petronas F1 Team";
-        if (lower.includes("verstappen")) return "Oracle Red Bull Racing";
         if (lower.includes("norris") || lower.includes("piastri")) return "McLaren F1 Team";
-        if (lower.includes("alonso")) return "Aston Martin Aramco F1 Team";
-        if (lower.includes("albon")) return "Williams Racing";
-        if (lower.includes("hülkenberg") || lower.includes("hulkenberg")) return "Stake F1 Team Kick Sauber";
-        if (lower.includes("tsunoda")) return "Visa Cash App RB F1 Team";
+        if (lower.includes("hamilton") || lower.includes("leclerc")) return "Scuderia Ferrari";
+        if (lower.includes("russell") || lower.includes("antonelli")) return "Mercedes-AMG Petronas F1 Team";
+        if (lower.includes("verstappen") || lower.includes("hadjar")) return "Oracle Red Bull Racing";
+        if (lower.includes("sainz") || lower.includes("albon")) return "Williams Racing";
+        if (lower.includes("alonso") || lower.includes("stroll")) return "Aston Martin Aramco F1 Team";
+        if (lower.includes("gasly") || lower.includes("colapinto")) return "BWT Alpine F1 Team";
+        if (lower.includes("ocon") || lower.includes("bearman")) return "MoneyGram Haas F1 Team";
+        if (lower.includes("lawson") || lower.includes("lindblad")) return "Visa Cash App Racing Bulls";
+        if (lower.includes("hülkenberg") || lower.includes("hulkenberg") || lower.includes("bortoleto")) return "Audi F1 Team";
+        if (lower.includes("p\u00e9rez") || lower.includes("perez") || lower.includes("bottas")) return "Cadillac F1 Team";
         return "Grid F1 2026";
     };
 

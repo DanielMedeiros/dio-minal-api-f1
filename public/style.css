@@ -22,9 +22,10 @@
     --color-aston: #00594f;
     --color-alpine: #0090ff;
     --color-williams: #00a0de;
-    --color-rb: #6600cc;
-    --color-sauber: #52e252;
+    --color-rb: #1469bc;
+    --color-audi: #bb0a14;
     --color-haas: #b6babd;
+    --color-cadillac: #000000;
 }
 
 * {
@@ -464,10 +465,12 @@ input[type="text"]:focus {
 .result-card.team-williams .card-avatar { border-color: var(--color-williams); color: var(--color-williams); }
 .result-card.team-rb { border-left: 4px solid var(--color-rb); }
 .result-card.team-rb .card-avatar { border-color: var(--color-rb); color: var(--color-rb); }
-.result-card.team-sauber { border-left: 4px solid var(--color-sauber); }
-.result-card.team-sauber .card-avatar { border-color: var(--color-sauber); color: var(--color-sauber); }
+.result-card.team-audi { border-left: 4px solid var(--color-audi); }
+.result-card.team-audi .card-avatar { border-color: var(--color-audi); color: var(--color-audi); }
 .result-card.team-haas { border-left: 4px solid var(--color-haas); }
 .result-card.team-haas .card-avatar { border-color: var(--color-haas); color: var(--color-haas); }
+.result-card.team-cadillac { border-left: 4px solid var(--color-cadillac); }
+.result-card.team-cadillac .card-avatar { border-color: var(--color-cadillac); color: var(--color-cadillac); }
 
 /* Loader CSS */
 .loader-container {
