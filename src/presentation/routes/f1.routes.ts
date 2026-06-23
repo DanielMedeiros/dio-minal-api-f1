@@ -16,6 +16,7 @@ export async function f1Routes(fastify: FastifyInstance) {
               data: {
                 type: "array",
                 items: { type: "string" },
+                maxItems: 100,
               },
             },
           },
@@ -70,6 +71,7 @@ export async function f1Routes(fastify: FastifyInstance) {
               data: {
                 type: "array",
                 items: { type: "string" },
+                maxItems: 100,
               },
             },
           },
