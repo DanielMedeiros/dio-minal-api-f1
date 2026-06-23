@@ -5,7 +5,7 @@ export class GetTeamByNameUseCase {
 
   execute(name: string): { team: string | null; error?: string } {
     const teams = this.getTeamsUseCase.execute();
-    const team = teams.find((t) => t.toLowerCase() === name.toLowerCase());
+    const team = teams.find((t) => t.toLowerCase().includes(name.toLowerCase()));
 
     if (!team) {
       return {

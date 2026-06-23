@@ -5,7 +5,7 @@ export class GetDriverByNameUseCase {
 
   execute(name: string): { driver: string | null; error?: string } {
     const drivers = this.getDriversUseCase.execute();
-    const driver = drivers.find((d) => d.toLowerCase() === name.toLowerCase());
+    const driver = drivers.find((d) => d.toLowerCase().includes(name.toLowerCase()));
 
     if (!driver) {
       return {
